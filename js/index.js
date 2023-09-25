@@ -24,7 +24,7 @@ function initalize() {
   menuDiv.style.visibility = 'hidden';
   gameDiv.style.visibility = 'visible';
   postGameDiv.style.visibility = 'hidden';
-  // music.play();
+  music.play();
   currentCount = 0;
   currentTime = 5;
   gameOver = false;
