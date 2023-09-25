@@ -2,7 +2,7 @@
 
 - Click Hero is a simple game that challenges you to click your mouse as rapidly as possible within 5 seconds.
 
-![Start Screen](./public/images/click.png)
+![Start Screen](/images/click.png)
 
 ## Technologies Used
 
