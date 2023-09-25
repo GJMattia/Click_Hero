@@ -8,7 +8,10 @@ const startBtn = document.getElementById('start-btn');
 const menuDiv = document.getElementById('menu');
 const gameDiv = document.getElementById('game');
 const ready = document.getElementById('ready');
-const postGameDiv = document.getElementById('postGame')
+const postGameDiv = document.getElementById('postGame');
+const form = document.getElementById('form');
+const input = document.getElementById('nameInput');
+
 const music = new Audio('/sound/music.mp3');
 
 //Variables
@@ -24,7 +27,7 @@ function initalize() {
   menuDiv.style.visibility = 'hidden';
   gameDiv.style.visibility = 'visible';
   postGameDiv.style.visibility = 'hidden';
-  music.play();
+  // music.play();
   currentCount = 0;
   currentTime = 5;
   gameOver = false;
@@ -62,6 +65,7 @@ function countDown() {
   if (currentTime === 0) {
     gameOver = true;
     postGameDiv.style.visibility = 'visible';
+    renderLeaderboards();
     message.innerText = `You clicked the button ${currentCount} times in 5 seconds`;
     clearInterval(interval);
     return;
@@ -74,8 +78,33 @@ function countDown() {
   seconds.innerText = currentTime;
 };
 
+function formatDate(date) {
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const year = date.getFullYear().toString();
+  return `${month}-${day}-${year}`;
+}
 
+function renderLeaderboards() {
+  const tableBody = document.querySelector('table tbody');
+  tableBody.innerHTML = '';
+  const playerData = JSON.parse(localStorage.getItem('playerData')) || [];
 
+  playerData.forEach((player) => {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    nameCell.textContent = player.name;
+    const clicksCell = document.createElement('td');
+    clicksCell.textContent = player.clicks;
+    const dateCell = document.createElement('td');
+    dateCell.textContent = player.date;
+
+    row.appendChild(nameCell);
+    row.appendChild(clicksCell);
+    row.appendChild(dateCell);
+    tableBody.appendChild(row);
+  });
+};
 
 
 //Event Listeners
@@ -86,5 +115,17 @@ countBtn.addEventListener('click', increment);
 
 resetBtn.addEventListener('click', initalize);
 
-
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  let date = new Date();
+  let playerData = JSON.parse(localStorage.getItem('playerData')) || [];
+  const player = {
+    name: nameInput.value,
+    clicks: currentCount,
+    date: formatDate(date)
+  }
+  playerData.push(player);
+  localStorage.setItem('playerData', JSON.stringify(playerData));
+  renderLeaderboards();
+});
 
