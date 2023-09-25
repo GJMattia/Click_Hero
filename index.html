@@ -9,14 +9,45 @@
   </head>
   <body>
     <div class="main-frame">
-      <h1>Click Hero</h1>
-      <h3>how many times can you click in 5 seconds?</h3>
+      <div id='menu' class="menu">
+        <h1 class="menu-title">CLICK HERO</h1>
+        <button id="start-btn" class="menu-btn">START</button>
+        <button id="leaderboards-btn" class="menu-btn">LEADERBOARDS</button>
+      </div>
+
+      <div id='game' class="game">
+      <h1 id='ready' class="game-title">Ready?</h1>
       <div class="timer">
         <div class="seconds" id="seconds"></div>
       </div>
       <div class="count" id="count"></div>
       <button id="countBtn" class="count-btn">CLICK</button>
-      <div id="message" class="message">click to get started</div>
+    </div>
+    <div id="postGame" class="post-game">
+      <div id="message" class="message">Click to get started</div>
+      <form id='leaderboards' class="leaderboards">
+        <h1>ENTER YOUR NAME</h1>
+        <input>
+        <button>Submit</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Clicks</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>29</td>
+            <td>09-09-2021</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class='reset' id="resetBtn">Restart Game</button>
+    </div>
     </div>
   </body>
 </html>
