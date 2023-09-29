@@ -147,7 +147,8 @@ body {
   animation: textclip 4s linear infinite;
   width: 50rem;
   text-align: center;
-  font-size: 6rem;
+  font-size: 10rem;
+  margin: 1rem;
 }
 
 .timer {
@@ -225,6 +226,33 @@ body {
   }
 }
 
+/* LEADERBOARD PAGE */
+
+.leaderboard-page {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #2e0060, #000000, #ff00ea, #060000);
+  background-size: 400% 400%;
+  animation: gradient 60s ease infinite;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.leaderboard-page>h1 {
+  font-family: 'Future';
+  color: white;
+  font-size: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+
+
+
 /* POST GAME  */
 
 .post-game {
@@ -232,7 +260,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #4dff00, #ffffff, #1eff00, #ffffff);
+  background: linear-gradient(45deg, #1d6000, #ffffff, #1eff00, #ffffff);
   background-size: 400% 400%;
   animation: gradient 60s ease infinite;
   display: flex;
@@ -253,25 +281,120 @@ body {
 }
 
 .leaderboards {
+  margin-top: 5rem;
   text-align: center;
-  width: 30rem;
-  height: 10rem;
+  width: 53rem;
+  height: 12rem;
   background-color: #888181;
+  font-family: 'Future';
+  background: linear-gradient(45deg, #000000, #ffffff, #000000, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  border-radius: 1rem;
+}
+
+.leaderboards>h1 {
+  color: white;
+  font-size: 2.5rem;
 }
 
 .reset {
-  position: absolute;
-  bottom: 0;
+  font-size: 1.5rem;
+  font-family: 'Future';
+
+  width: 25rem;
+  height: 5rem;
+  background: linear-gradient(45deg, #001e47, #000000, #008cff, #000000);
+  background-size: 400% 400%;
+  animation: gradient 3s ease infinite;
+  border: 0;
+  border-radius: 1rem;
+  color: white;
 }
+
+.reset:hover {
+  background: linear-gradient(45deg, #004700, #ffffff, #5eff00, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 3s ease infinite;
+  cursor: pointer;
+
+}
+
+.name-input {
+  margin-top: 1rem;
+  border: 0;
+  width: 20rem;
+  height: 3rem;
+  font-size: 2rem;
+  font-family: 'Future';
+}
+
+.submit-btn {
+  position: relative;
+  left: 2rem;
+  bottom: .2rem;
+  font-family: 'Future';
+  width: 10rem;
+  height: 3rem;
+  border: 0;
+  border-radius: .5rem;
+  background: linear-gradient(45deg, #470000, #ffffff, #ff0000, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(45deg, #004700, #ffffff, #5eff00, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  cursor: pointer;
+}
+
 
 table {
-  font-size: 2rem;
+  width: 75%;
+  border-collapse: collapse;
+  font-family: impact;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 
+/* Style for table headers (th) */
 th {
-  padding: 2rem;
+  padding: 10px;
+  text-align: center;
+  background-color: crimson;
+
 }
 
+/* Style for table cells (td) */
 td {
-  padding: 2rem;
+  padding: 10px;
+  text-align: center;
+}
+
+
+tr:nth-child(even) {
+  background: linear-gradient(45deg, #0084ff, #ffffff, #00375c, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+tr:nth-child(odd) {
+  background: linear-gradient(45deg, #007d88, #ffffff, #01ffff, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+tr:hover {
+  background-color: dodgerblue;
+}
+
+.post-game-btns {
+  width: 80%;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: row;
 }

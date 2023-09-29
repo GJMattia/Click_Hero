@@ -16,7 +16,7 @@
 - Rapidily click your mouse
 - Add your score to the leaderboard
 
-## Deployed Project
+## About Development
 
 - My goal in developing Click Hero was to enhance my web development skills by utilizing CSS animation and JavaScript to create an simple, yet polished browser game. Additionally, I initially experimented with integrating a back-end database for score storage but ultimately found that leveraging browser localStorage provided a more efficient and seamless solution. 
 

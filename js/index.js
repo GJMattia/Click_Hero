@@ -11,6 +11,8 @@ const ready = document.getElementById('ready');
 const postGameDiv = document.getElementById('postGame');
 const form = document.getElementById('form');
 const input = document.getElementById('nameInput');
+const leaderboardsBtn = document.getElementById('leaderboardsBtn');
+const leaderboardDiv = document.getElementById('leaderboard');
 
 const music = new Audio('/sound/music.mp3');
 
@@ -27,7 +29,7 @@ function initalize() {
   menuDiv.style.visibility = 'hidden';
   gameDiv.style.visibility = 'visible';
   postGameDiv.style.visibility = 'hidden';
-  // music.play();
+  music.play();
   currentCount = 0;
   currentTime = 5;
   gameOver = false;
@@ -65,8 +67,8 @@ function countDown() {
   if (currentTime === 0) {
     gameOver = true;
     postGameDiv.style.visibility = 'visible';
-    renderLeaderboards();
     message.innerText = `You clicked the button ${currentCount} times in 5 seconds`;
+    renderLeaderboards();
     clearInterval(interval);
     return;
   }
@@ -106,14 +108,30 @@ function renderLeaderboards() {
   });
 };
 
+function viewLeaderboards() {
+  menuDiv.style.visibility = 'hidden';
+  renderLeaderboards();
+  leaderboardDiv.style.visibility = 'visible';
+};
+
+function returnMainMenu() {
+  console.log('hello');
+  postGameDiv.style.visibility = 'hidden';
+  gameDiv.style.visibility = 'hidden';
+  leaderboardDiv.style.visibility = 'hidden';
+  menuDiv.style.visibility = 'visible';
+}
 
 //Event Listeners
 
-startBtn.addEventListener('click', initalize)
+
+startBtn.addEventListener('click', initalize);
 
 countBtn.addEventListener('click', increment);
 
 resetBtn.addEventListener('click', initalize);
+
+leaderboardsBtn.addEventListener('click', viewLeaderboards)
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -126,6 +144,10 @@ form.addEventListener('submit', function (e) {
   }
   playerData.push(player);
   localStorage.setItem('playerData', JSON.stringify(playerData));
+  nameInput.value = '';
+  postGameDiv.style.visibility = 'hidden';
+  gameDiv.style.visibility = 'hidden';
+  leaderboardDiv.style.visibility = 'visible';
   renderLeaderboards();
 });
 

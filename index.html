@@ -8,12 +8,30 @@
     <title>Click Hero</title>
   </head>
   <body>
+
     <div class="main-frame">
       <div id='menu' class="menu">
         <h1 class="menu-title">CLICK HERO</h1>
         <button id="start-btn" class="menu-btn">START</button>
-        <button id="leaderboards-btn" class="menu-btn">LEADERBOARDS</button>
+        <button id="leaderboardsBtn" class="menu-btn">LEADERBOARDS</button>
       </div>
+
+      <div id="leaderboard" class="leaderboard-page">
+        <h1>LEADERBOARDS</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Clicks</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button class='reset' >Back to Main Menu</button>
+      </div>
+
 
       <div id='game' class="game">
       <h1 id='ready' class="game-title">Ready?</h1>
@@ -23,25 +41,19 @@
       <div class="count" id="count"></div>
       <button id="countBtn" class="count-btn">CLICK</button>
     </div>
+
     <div id="postGame" class="post-game">
-      <div id="message" class="message">Click to get started</div>
+      <div id="message" class="message"></div>
+      
       <form id='form' class="leaderboards">
         <h1>ENTER YOUR NAME</h1>
-        <input id="nameInput">
-        <button type="submit">Submit</button>
+        <input class='name-input' id="nameInput">
+        <button class='submit-btn' type="submit">Submit</button>
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Clicks</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class="post-game-btns">
       <button class='reset' id="resetBtn">Restart Game</button>
+      <button class='reset'>Back to Main Menu</button>
+    </div>
     </div>
     </div>
   </body>
