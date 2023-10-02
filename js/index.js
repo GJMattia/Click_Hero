@@ -13,8 +13,13 @@ const form = document.getElementById('form');
 const input = document.getElementById('nameInput');
 const leaderboardsBtn = document.getElementById('leaderboardsBtn');
 const leaderboardDiv = document.getElementById('leaderboard');
+const lbBtn = document.getElementById('lbBtn');
+const pgBtn = document.getElementById('pgBtn');
 
 const music = new Audio('/sound/music.mp3');
+const menuSound = new Audio('/sound/menuclick.mp3');
+const clickSound = new Audio('/sound/click.mp3');
+
 
 //Variables
 let currentCount = 0;
@@ -22,14 +27,17 @@ let currentTime = 5;
 let gameOver = false;
 let interval = null;
 
-
+music.volume = 0.5;
+music.play();
 //Functions
 
 function initalize() {
+  menuSound.play();
   menuDiv.style.visibility = 'hidden';
   gameDiv.style.visibility = 'visible';
   postGameDiv.style.visibility = 'hidden';
-  music.play();
+  ready.innerText = 'READY?'
+  renderLeaderboards();
   currentCount = 0;
   currentTime = 5;
   gameOver = false;
@@ -42,6 +50,7 @@ function initalize() {
 
 function increment() {
   if (currentTime === 0) {
+    ready.innerText = `STOP!`
     return;
   };
   if (currentCount > 0) {
@@ -63,7 +72,7 @@ function increment() {
 };
 
 function countDown() {
-  console.log('sauce');
+  clickSound.play();
   if (currentTime === 0) {
     gameOver = true;
     postGameDiv.style.visibility = 'visible';
@@ -91,8 +100,9 @@ function renderLeaderboards() {
   const tableBody = document.querySelector('table tbody');
   tableBody.innerHTML = '';
   const playerData = JSON.parse(localStorage.getItem('playerData')) || [];
-
-  playerData.forEach((player) => {
+  let sortedArray = playerData.sort((a, b) => b.clicks - a.clicks);
+  let topSix = sortedArray.splice(0, 6);
+  topSix.forEach((player) => {
     const row = document.createElement('tr');
     const nameCell = document.createElement('td');
     nameCell.textContent = player.name;
@@ -100,7 +110,6 @@ function renderLeaderboards() {
     clicksCell.textContent = player.clicks;
     const dateCell = document.createElement('td');
     dateCell.textContent = player.date;
-
     row.appendChild(nameCell);
     row.appendChild(clicksCell);
     row.appendChild(dateCell);
@@ -109,13 +118,15 @@ function renderLeaderboards() {
 };
 
 function viewLeaderboards() {
+  menuSound.play();
   menuDiv.style.visibility = 'hidden';
   renderLeaderboards();
   leaderboardDiv.style.visibility = 'visible';
 };
 
 function returnMainMenu() {
-  console.log('hello');
+  menuSound.play();
+  renderLeaderboards();
   postGameDiv.style.visibility = 'hidden';
   gameDiv.style.visibility = 'hidden';
   leaderboardDiv.style.visibility = 'hidden';
@@ -124,6 +135,9 @@ function returnMainMenu() {
 
 //Event Listeners
 
+lbBtn.addEventListener('click', returnMainMenu);
+
+pgBtn.addEventListener('click', returnMainMenu);
 
 startBtn.addEventListener('click', initalize);
 
@@ -134,6 +148,7 @@ resetBtn.addEventListener('click', initalize);
 leaderboardsBtn.addEventListener('click', viewLeaderboards)
 
 form.addEventListener('submit', function (e) {
+  menuSound.play();
   e.preventDefault();
   let date = new Date();
   let playerData = JSON.parse(localStorage.getItem('playerData')) || [];
@@ -150,4 +165,6 @@ form.addEventListener('submit', function (e) {
   leaderboardDiv.style.visibility = 'visible';
   renderLeaderboards();
 });
+
+
 
