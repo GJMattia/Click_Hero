@@ -11,12 +11,12 @@ body {
 
 @font-face {
   font-family: 'Future';
-  src: url('/fonts/future.otf') format('opentype');
+  src: url('../fonts/future.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Digital';
-  src: url('/fonts/digital.TTF') format('opentype');
+  src: url('../fonts/digital.TTF') format('opentype');
 }
 
 .main-frame {
@@ -117,6 +117,7 @@ body {
 
 /* THE ACTUAL GAME */
 .game {
+  border-radius: 1rem;
   visibility: hidden;
   display: flex;
   justify-content: flex-start;
@@ -249,6 +250,7 @@ body {
 /* LEADERBOARD PAGE */
 
 .leaderboard-page {
+  border-radius: 1rem;
   visibility: hidden;
   position: absolute;
   width: 100%;
@@ -290,6 +292,7 @@ body {
 /* POST GAME  */
 
 .post-game {
+  border-radius: 1rem;
   visibility: hidden;
   position: absolute;
   width: 100%;
