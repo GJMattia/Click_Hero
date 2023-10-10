@@ -16,9 +16,9 @@ const leaderboardDiv = document.getElementById('leaderboard');
 const lbBtn = document.getElementById('lbBtn');
 const pgBtn = document.getElementById('pgBtn');
 
-const music = new Audio('../sound/music.mp3');
-const menuSound = new Audio('../sound/MenuClick.mp3');
-const clickSound = new Audio('../sound/click.mp3');
+const music = new Audio('./sound/music.mp3');
+const menuSound = new Audio('./sound/MenuClick.mp3');
+const clickSound = new Audio('./sound/click.mp3');
 
 
 //Variables
